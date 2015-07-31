@@ -1,0 +1,61 @@
+$def with (alist)
+
+<html>
+<!--
+Here, we have used bootstrap to style the page. We have a form that take the Url and submits it. The POST method in Webapp index class is called and it returns the information in the form of a list which
+is then rendered with html 
+-->
+    <head>
+    	<style>
+  body {
+  		padding-left: 180px;
+  		padding-right: 180px;
+  		}
+  .center{
+  	border-radius: 35px;
+  	background-color:rgba(2,123,123,0.2);
+  		padding-left: 180px;
+  		padding-right: 180px;
+  }
+
+</style>
+        <title>RSS Reader</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    </head>
+<body style="">
+	<div class="container">
+  <h1 style="margin-left:420px">RSS Reader</h1>
+  <p style="margin-left:380px">Enter any RSS URL to read through it's contents</p>           
+
+<form action="" method="POST" style="margin-left:400px">
+    URL: <input type="text" name="url">
+    
+    <input type="submit" class="btn btn-success">
+    <br>
+    <br>
+</form>
+</div>
+<div class = "center">
+	<br>
+$for item in alist:
+	$if len(item) >0:
+		$for i in item:
+			$if i == item[0]:
+				<b style="font-size: 24px; font-family: "Times New Roman", Times, serif;">$i</b>
+			$elif i[:7] == 'http://':
+				<a href = $i >Link to Story </a>
+			$else:
+				$i
+			$"\n"
+			<br>
+		<br>	
+</div>
+</body>
+</html>
